@@ -6,9 +6,8 @@ class SimpleReport:
     def generate(cls, lista_de_dicts):
         today = str(datetime.today())
 
-        # São criadas duas variaveis data a partir do dicionário,
-        # as listas de datas são ordenadas para se obter os dados
-        # que queremos.
+        # São criadas duas variaveis para receber os primeiros
+        # os dados do dicionario, referentes a datas de fabricação e validade
 
         data_fab_mais_antiga = lista_de_dicts[0]["data_de_fabricacao"]
         data_val_mais_proxima = lista_de_dicts[0]["data_de_validade"]
@@ -25,7 +24,8 @@ class SimpleReport:
                 and x["data_de_validade"] >= today
             ):
                 data_val_mais_proxima = x["data_de_validade"]
-
+        # Utilizando a função max() para obter o nome da empresa
+        # que aperece mais vezes dentro do dicionario.
         firm_name = max(
             x["nome_da_empresa"]
             for x in lista_de_dicts
